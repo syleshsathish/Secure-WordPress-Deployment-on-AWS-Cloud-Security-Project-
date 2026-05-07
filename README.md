@@ -1,70 +1,107 @@
-# Secure-WordPress-Deployment-on-AWS-Cloud-Security-Project-
+# Secure WordPress Deployment on AWS
 
-This project demonstrates the secure deployment of a WordPress application on an AWS EC2 instance using the LAMP stack (Linux, Apache, MariaDB, and PHP). The main objective of the project was to implement cloud security best practices while deploying and monitoring a functional WordPress environment.
+## Overview
 
-The project includes infrastructure hardening, application security, monitoring, logging, and vulnerability assessment using both AWS-native and third-party security tools.
+This project demonstrates the secure deployment of a WordPress application on an AWS EC2 instance using the LAMP stack (Linux, Apache, MariaDB, and PHP). The main focus of the project was to implement cloud security best practices while configuring, monitoring, and testing a secure WordPress environment.
 
+The project includes infrastructure setup, application hardening, monitoring, logging, and vulnerability assessment using both AWS-native and third-party security tools.
+
+---
 
 ## Objectives
 
-- Deploy a WordPress website on AWS EC2
+- Deploy WordPress on AWS EC2
 - Configure a LAMP stack on Ubuntu 24.04
 - Implement infrastructure and application-level security
-- Monitor system activity and detect threats
-- Perform vulnerability assessment and security testing
-- Gain practical experience in cloud security and web application hardening
+- Monitor and audit system activities
+- Perform vulnerability assessments and security testing
+- Gain practical experience in cloud and web application security
 
-## Architecture
+---
 
-The application was hosted on an AWS EC2 Ubuntu instance with the LAMP stack installed manually. WordPress was configured on top of the stack, and multiple security and monitoring services were integrated into the environment.
+## Technologies and Tools Used
 
-AWS EC2 Instance
-│
-├── Apache Web Server
-├── MariaDB Database
-├── PHP
-└── WordPress
-     ├── Wordfence Security Plugin
-     ├── Two-Factor Authentication
-     └── Brute Force Protection
+- AWS EC2
+- Ubuntu 24.04
+- Apache2
+- MariaDB
+- PHP
+- WordPress
+- AWS CloudWatch
+- AWS CloudTrail
+- AWS GuardDuty
+- Datadog
+- Wordfence
+- Nmap
+- Nessus
+- WPScan
+- Kali Linux
 
-Security & Monitoring
-├── AWS CloudWatch
-├── AWS CloudTrail
-├── AWS GuardDuty
-└── Datadog
+---
 
-Security Implementations
-~Infrastructure Security
-~Configured AWS Security Groups
-~Restricted inbound traffic to required ports only
-~Used SSH key-based authentication
-~Applied Linux hardening techniques
-~Managed file and directory permissions securely
+## Security Implementations
 
-WordPress Security
-~Installed and configured Wordfence
-~Enabled brute-force protection
-~Enabled two-factor authentication
-~Performed malware scanning
-~Restricted access to sensitive directories
+### Infrastructure Security
 
-Monitoring and Logging
-~CloudWatch for resource monitoring and alerts
-~CloudTrail for activity logging and auditing
-~GuardDuty for threat detection
-~Datadog for real-time infrastructure monitoring
+- Configured AWS Security Groups
+- Restricted inbound traffic to required ports only
+- Enabled SSH key-based authentication
+- Applied Linux server hardening techniques
+- Managed secure file and directory permissions
 
-Security Testing
-Nmap: Used for port scanning and identifying exposed services.
-Nessus: Used for vulnerability assessment and identifying server misconfigurations.
-WPScan: Used to test WordPress-specific vulnerabilities and weak configurations.
+### WordPress Security
 
+- Installed and configured Wordfence
+- Enabled brute-force protection
+- Configured two-factor authentication
+- Performed malware scanning
+- Restricted access to sensitive directories
 
-Key Findings
-Finding	Risk Level
-XML-RPC Enabled	Medium
-Directory Listing Enabled	Medium
-Admin Username Enumeration	Medium
-No HTTPS/SSL Configuration	High
-Server Information Disclosure	Low
+### Monitoring and Logging
+
+- Configured CloudWatch for system monitoring
+- Enabled CloudTrail for activity logging
+- Enabled GuardDuty for threat detection
+- Integrated Datadog for real-time monitoring
+
+---
+
+## Security Testing
+
+### Nmap
+
+Used for:
+- Port scanning
+- Service detection
+- Firewall validation
+
+### Nessus
+
+Used for:
+- Vulnerability assessment
+- Server exposure analysis
+
+### WPScan
+
+Used for:
+- WordPress vulnerability scanning
+- Identifying weak configurations
+
+---
+
+## Key Findings
+
+- XML-RPC was enabled and could be exploited for brute-force attacks
+- Directory listing was enabled in some WordPress directories
+- Admin username enumeration was possible
+- HTTPS/SSL was not configured
+- Apache server information was exposed in headers
+
+---
+
+## Setup Process
+
+### Connect to EC2 Instance
+
+```bash id="7mxtvj"
+ssh -i "Wkey.pem" ubuntu@<public-ip>
