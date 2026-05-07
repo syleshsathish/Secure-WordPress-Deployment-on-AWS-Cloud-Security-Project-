@@ -97,11 +97,3 @@ Used for:
 - HTTPS/SSL was not configured
 - Apache server information was exposed in headers
 
----
-
-## Setup Process
-
-### Connect to EC2 Instance
-
-```bash id="7mxtvj"
-ssh -i "Wkey.pem" ubuntu@<public-ip>
